@@ -23,4 +23,14 @@ class RedisAsync extends Base
     {
         return \PHPDaemon\Clients\Redis\Pool::getInstance(['servers' => 'tcp://' . $config->server]);
     }
+
+    /**
+     * @param string $name
+     * @param bool $caching
+     * @return \PHPDaemon\Clients\Redis\Pool
+     */
+    public function get(string $name = '', bool $caching = true): \PHPDaemon\Clients\Redis\Pool
+    {
+        return parent::get($name, $caching);
+    }
 }

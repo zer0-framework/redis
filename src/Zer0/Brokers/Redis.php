@@ -44,4 +44,14 @@ class Redis extends Base
 
         return $redis;
     }
+
+    /**
+     * @param string $name
+     * @param bool $caching
+     * @return RedisClient
+     */
+    public function get(string $name = '', bool $caching = true)
+    {
+        return parent::get($name, $caching);
+    }
 }
