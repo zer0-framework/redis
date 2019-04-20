@@ -1,8 +1,8 @@
 {
-    "name"  : "Zer0-Framework/Redis",
+    "name"  : "zer0-framework/redis",
     "type"  : "library",
     "keywords": ["Zer0", "highload"],
-    "homepage": "https://github.com/Zer0-Framework/Redis",
+    "homepage": "https://github.com/zer0-framework/redis",
     "license" : "GPL-3.0-or-later",
     "description": "",
     "authors" : [
@@ -14,12 +14,12 @@
     ],
     "support" : {
         "email" : "kak.serpom.po.yaitsam@gmail.com",
-        "issues": "https://github.com/Zer0-Framework/Redis/issues"
+        "issues": "https://github.com/zer0-framework/redis/issues"
     },
     "require": {
         "php": ">=7.2",
-        "Zer0-Framework/Zer0": "*",
-        "Zer0-Framework/Config": "*",
+        "zer0-framework/core": "*",
+        "zer0-framework/config": "*",
         "cheprasov/php-redis-client": "^1.8"
     },
     "autoload": {
