@@ -11,6 +11,6 @@
 ## Пример использования:
 
 ```php
-$redis = $app->broker('Redis')->get();
+$redis = $app->factory('Redis');
 $redis->set('foo', 'bar');
 ```

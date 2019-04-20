@@ -33,11 +33,11 @@ class Redis extends Base
         }
 
 
-        $tracy = $this->app->broker('Tracy')->get();
+        $tracy = $this->app->factory('Tracy');
         if ($tracy !== null) {
             $redis = new RedisDebug($redis);
             $tracy->addPanel(new BarPanel($redis));
-            $this->app->broker('HTTP')->get()->on('endRequest', function () use ($redis) {
+            $this->app->factory('HTTP')->on('endRequest', function () use ($redis) {
                 $redis->resetQueryLog();
             });
         }
