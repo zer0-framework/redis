@@ -23,10 +23,14 @@ class Redis extends Base
     {
         $type = $config->type ?? 'standalone';
         if ($type === 'standalone') {
-            $attrs = [
-                'server' => ($config->server ?? '127.0.0.1') . ':' . ($config->port ?? 6379),
-                'timeout' => $config->timeout ?? 30,
-            ];
+            unset($config['type']);
+            if (!isset($attrs['server'])) {
+                $attrs['server'] = '127.0.0.1';
+            }
+            if (strpos($attrs['server'], ':') === false)  {
+                $attrs['server'] .= ':6379';
+            }
+
             $redis = new RedisClient($attrs);
         } else {
             throw new UnsupportedActionException;
