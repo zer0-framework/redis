@@ -23,7 +23,8 @@ class Redis extends Base
     {
         $type = $config->type ?? 'standalone';
         if ($type === 'standalone') {
-            unset($config['type']);
+            $attrs = $config->toArray();
+            unset($attrs['type']);
             if (!isset($attrs['server'])) {
                 $attrs['server'] = '127.0.0.1';
             }
