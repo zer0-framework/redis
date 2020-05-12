@@ -2,6 +2,7 @@
 
 namespace Zer0\Drivers\Redis\Tracy;
 
+use Zer0\Drivers\Redis\ExtRedisDebug;
 use Zer0\Drivers\Redis\RedisDebug;
 
 /**
@@ -51,15 +52,7 @@ class BarPanel implements \Tracy\IBarPanel
 
     /**
      * BarPanel constructor.
-     * @param RedisDebug $redis
-     */
-    /**
-     * BarPanel constructor.
-     * @param RedisDebug $redis
-     */
-    /**
-     * BarPanel constructor.
-     * @param RedisDebug $redis
+     * @param RedisDebug|ExtRedisDebug $redis
      */
     public function __construct($redis)
     {
