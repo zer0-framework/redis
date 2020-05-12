@@ -14,11 +14,6 @@ class RedisDebug
     use QueryLog;
 
     /**
-     * @var null|array
-     */
-    protected $transaction;
-
-    /**
      * @var RedisClient
      */
     protected $redis;
