@@ -61,7 +61,7 @@ class BarPanel implements \Tracy\IBarPanel
      * BarPanel constructor.
      * @param RedisDebug $redis
      */
-    public function __construct(RedisDebug $redis)
+    public function __construct($redis)
     {
         $this->redis = $redis;
     }

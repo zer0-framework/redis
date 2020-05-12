@@ -19,7 +19,7 @@ class Redis extends Base
      * @return RedisClient
      * @throws UnsupportedActionException
      */
-    public function instantiate(ConfigInterface $config)
+    public function instantiate(ConfigInterface $config): RedisClient
     {
         $type = $config->type ?? 'standalone';
         if ($type === 'standalone') {
@@ -48,15 +48,5 @@ class Redis extends Base
         }
 
         return $redis;
-    }
-
-    /**
-     * @param string $name
-     * @param bool $caching
-     * @return RedisClient
-     */
-    public function get(string $name = '', bool $caching = true)
-    {
-        return parent::get($name, $caching);
     }
 }
