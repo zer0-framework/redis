@@ -32,6 +32,9 @@ class ExtRedis extends Base
         if ($type === 'standalone') {
             $redis = new \Redis();
             $redis->connect($config->server ?? '127.0.0.1', $config->port ?? 6379);
+            if (isset($config->database)) {
+                $redis->select($config->database);
+            }
         }
         else {
             throw new UnsupportedActionException;
