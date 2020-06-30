@@ -16,7 +16,7 @@ class Redis extends Base
 {
     /**
      * @param ConfigInterface $config
-     * @return RedisClient
+     * @return \RedisClient\RedisClient
      * @throws UnsupportedActionException
      */
     public function instantiate(ConfigInterface $config)
