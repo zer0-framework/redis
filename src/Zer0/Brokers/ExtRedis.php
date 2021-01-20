@@ -31,7 +31,10 @@ class ExtRedis extends Base
         $type = $config->type ?? 'standalone';
         if ($type === 'standalone') {
             $redis = new \Redis();
-            $redis->connect($config->server ?? '127.0.0.1', $config->port ?? 6379, $config->timeout ?? 0);
+            $split = explode(':', $config->server ?? '127.0.0.1');
+            $server = $split[0];
+            $port  = $split[1] ?? null;
+            $redis->connect($server, $port ?? $config->port ?? 6379, $config->timeout ?? 0);
             if (($config->read_timeout ?? null) !== null) {
                 $redis->setOption(\Redis::OPT_READ_TIMEOUT, $config->read_timeout ?? $config->timeout ?? 0);
             }
