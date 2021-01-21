@@ -48,7 +48,7 @@ class ExtRedisCluster extends Base
              */
             public function each(callable $cb)
             {
-                foreach ($this->config->luster_nodes ?? [$this->config->server] as $node) {
+                foreach ($this->config->cluster_nodes ?? [$this->config->server] as $node) {
                     $redis = new \Redis();
                     $split = explode(':', $node);
                     $server = $split[0];
