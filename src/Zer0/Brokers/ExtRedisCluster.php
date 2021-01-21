@@ -28,8 +28,7 @@ class ExtRedisCluster extends Base
      */
     public function instantiate(ConfigInterface $config)
     {
-        $type = $config->type ?? 'standalone';
-        return new class {
+        return new class ($config) {
             /**
              * @var ConfigInterface
              */
@@ -41,7 +40,7 @@ class ExtRedisCluster extends Base
              */
             public function __construct(ConfigInterface $config)
             {
-                $this->config;
+                $this->config = $config;
             }
 
             /**
@@ -49,14 +48,14 @@ class ExtRedisCluster extends Base
              */
             public function each(callable $cb)
             {
-                foreach ($config->cluster_nodes ?? [$config->server] as $node) {
+                foreach ($this->config->luster_nodes ?? [$this->config->server] as $node) {
                     $redis = new \Redis();
                     $split = explode(':', $node);
                     $server = $split[0];
                     $port = $split[1] ?? null;
-                    $redis->connect($server, $port ?? $config->port ?? 6379, $config->timeout ?? 0);
-                    if (($config->read_timeout ?? null) !== null) {
-                        $redis->setOption(\Redis::OPT_READ_TIMEOUT, $config->read_timeout ?? $config->timeout ?? 0);
+                    $redis->connect($server, $port ?? $this->config->port ?? 6379, $this->config->timeout ?? 0);
+                    if (($this->config->read_timeout ?? null) !== null) {
+                        $redis->setOption(\Redis::OPT_READ_TIMEOUT, $this->config->read_timeout ?? $this->config->timeout ?? 0);
                     }
                     $cb($redis);
                 }
