@@ -21,7 +21,10 @@ class RedisAsync extends Base
      */
     public function instantiate(ConfigInterface $config): \PHPDaemon\Clients\Redis\Pool
     {
-        return \PHPDaemon\Clients\Redis\Pool::getInstance(['servers' => 'tcp://' . $config->server]);
+        return \PHPDaemon\Clients\Redis\Pool::getInstance([
+            'servers' => 'tcp://' . $config->server,
+            'max-allowed-packet' => '2G',
+        ]);
     }
 
     /**
