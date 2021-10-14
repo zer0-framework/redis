@@ -20,7 +20,7 @@
         "php": ">=7.2",
         "zer0-framework/core": "*",
         "zer0-framework/config": "*",
-        "cheprasov/php-redis-client": "^1.8"
+        "cheprasov/php-redis-client": "dev-master"
     },
     "autoload": {
         "classmap": ["src/"]
